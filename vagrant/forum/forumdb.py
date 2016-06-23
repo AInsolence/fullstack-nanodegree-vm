@@ -38,7 +38,8 @@ def AddPost(content):
     '''
     DB = psycopg2.connect(dbname = 'forum')
     cursor = DB.cursor
-    cursor.execute('INSERT INTO posts ('content') VALUES ('%s') % content')
-    t = time.strftime('%c', time.localtime())
+    cursor.execute('INSERT INTO posts ('content') VALUES ('%s')', (content,))
+    cursor.execute('UPDATE posts SET content = 'cheese' WHERE content like '%spam%'')
+    cursor.execute('DELETE FROM posts WHERE content = 'cheese'')
     DB.commit()
     DB.close()
