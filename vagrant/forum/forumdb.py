@@ -6,7 +6,7 @@ import time
 import psycopg2
 
 ## Database connection
-conn = psycopg2.connect(user = 'postgres', password = 'postgres', host = '127.0.0.1', dbname = 'forum')
+conn = psycopg2.connect(dbname = 'forum')
 cursor = conn.cursor
 cursor.execute('select * from forum')
 DB = cursor.fetchall()
