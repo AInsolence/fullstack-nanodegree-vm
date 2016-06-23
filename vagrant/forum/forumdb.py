@@ -3,9 +3,15 @@
 # 
 
 import time
+import psycopg2
 
 ## Database connection
-DB = []
+conn = psycopg2.connect(user = 'postgres', password = 'postgres', host = '127.0.0.1', dbname = 'forum')
+cursor = conn.cursor
+cursor.execute('select * from forum')
+DB = cursor.fetchall()
+conn.close()
+
 
 ## Get posts from database.
 def GetAllPosts():
